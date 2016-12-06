@@ -1,29 +1,30 @@
 //Copied Pointers
 //.cpp file
 
-#include "Copied_Buff.h"
+#include "Copied.h"
 #include <iostream>
 using namespace std;
 
 
-Copied_Buff::Copied_Buff() //default constructor
+Buffer_Copied::Buffer_Copied() //default constructor
 {
-	cout << "\tDefault Constructor..." << endl;
+	cout << "\tBuffer_Copied Default Constructor..." << endl;
 	_length = 0;
 	_strbuf = NULL;	
 }
 
 // destructor
-Copied_Buff::~Copied_Buff()
+Buffer_Copied::~Buffer_Copied()
 {
-	cout << "\tDestructor..." << endl;
+	cout << "\tBuffer_Copied Destructor..." << endl;
 	delete[] _strbuf;
 }
 
-Copied_Buff::Copied_Buff(const Copied_Buff& newObject) {
-	cout << "\tContructor with 1 param..." << endl;
+Buffer_Copied::Buffer_Copied(const Buffer_Copied& newObject) {
+	cout << "\tBuffer_copied Contructor with 1 param..." << endl;
 	_length = newObject.len();
-	_strbuf = new char[_length];
+	//_strbuf = new char[_length];
+	this->reserve(_length);
 	int count = 0;
 	while (count < _length) {
 		_strbuf[count] = newObject.charAt(count);
@@ -33,10 +34,11 @@ Copied_Buff::Copied_Buff(const Copied_Buff& newObject) {
 
 
 //creates a new buffer and copies the data into the new buffer
-Copied_Buff::Copied_Buff(char* newString, int length)
+Buffer_Copied::Buffer_Copied(char* newString, int length)
 {
-	cout << "\tContructor with 2 parameters..." << endl;
-	_strbuf = new char[length];
+	cout << "\tBuffer_Copied Contructor with 2 parameters..." << endl;
+	//_strbuf = new char[length];
+	this->reserve(length);
 	_length = length;
 	int count = 0;
 	while (count < length) {
@@ -46,11 +48,11 @@ Copied_Buff::Copied_Buff(char* newString, int length)
 
 }
 
-void Copied_Buff::append(char newChar)
+void Buffer_Copied::append(char newChar)
 {
 	cout << "\tAppending..." << endl;
 	char* newstr = this->_strbuf;
-	this->_strbuf = new char[++_length];//increase length to cater for new char and then create new buffer
+	this->reserve(++_length);//increase length to cater for new char and then create new buffer using reserve
 	int count = 0;
 	while (count < this->_length - 1) {
 		_strbuf[count] = newstr[count];
@@ -58,26 +60,25 @@ void Copied_Buff::append(char newChar)
 	}
 	_strbuf[_length - 1] = newChar; // the appended item will be at the last index position i.e length-1 since indices start from 0
 	delete[] newstr;
-
 }
 
 
-int Copied_Buff::len() const {
+int Buffer_Copied::len() const {
 	//cout << "length..." << endl;
-	return _length;
+	return this->_length;
 }
 
 
 //returns char placed at the provided index
-char Copied_Buff::charAt(int bufferindex) const
+char Buffer_Copied::charAt(int bufferindex) const
 {
 	//cout << "charAt" << endl;
 	return _strbuf[bufferindex];
 }
 
 
-void Copied_Buff::reserve(int length)
+void Buffer_Copied::reserve(int length)
 {
 	//cout << "reserve" << endl;
-	_strbuf = new char[length];
+	this->_strbuf = new char[length];
 }

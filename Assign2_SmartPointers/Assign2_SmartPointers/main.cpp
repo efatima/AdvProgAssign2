@@ -8,7 +8,7 @@
 ***************************/
 #include<iostream>
 #include"COW_RefCount.h"
-#include"Copied_Buff.h"
+#include"Copied.h"
 
 
 using namespace std;
@@ -23,8 +23,8 @@ int main() {
 	cout << "\n\n\t%%%%%%%%%%%%%%%  Copied Pointers %%%%%%%%%%%%%%%%%%%%" << endl;
 
 
-	Copied_Buff* copied1 = new Copied_Buff(myString, strlen(myString));
-	Copied_Buff* copied2 = new Copied_Buff(*copied1); //copying first pointer to second 
+	String_Copied* copied1 = new String_Copied("Eman", 4);
+	String_Copied* copied2 = new String_Copied(*copied1); //copying first pointer to second -- deep copying
 
     //All indices start from 0
 	cout << "\tLength of copied1 Buffer: " << copied1->len() << endl;
