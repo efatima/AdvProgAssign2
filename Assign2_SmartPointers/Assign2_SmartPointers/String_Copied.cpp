@@ -8,19 +8,19 @@ using namespace std;
 
 String_Copied::String_Copied() //default constructor
 {
-	cout << "\tString_Copied Default Constructor..." << endl;
+	cout << "String_Copied Default Constructor..." << endl;
 	this->_str = new Buffer_Copied();
 }
 
 // destructor
 String_Copied::~String_Copied()
 {
-	cout << "\tString_copied Destructor..." << endl;
+	cout << "String_copied Destructor..." << endl;
 	delete this->_str;
 }
 
 String_Copied::String_Copied(const String_Copied& newStringObject) {//creates new buffer class oject and passes buffer type parameter after extracting it from the input
-	cout << "\tString_Copied Contructor with 1 param..." << endl;
+	cout << "String_Copied Contructor with 1 param..." << endl;
 	this->_str = new Buffer_Copied(*newStringObject._str);
 }
 
@@ -51,7 +51,7 @@ char String_Copied::charAt(int bufferindex) const
 		return this->_str->charAt(bufferindex);
 	}
 	else {
-		cout << "\n\tINVALID INDEX PROVIDED!\n";
+		cout << "\nINVALID INDEX PROVIDED!\n";
 		return ' ';
 	}
 }

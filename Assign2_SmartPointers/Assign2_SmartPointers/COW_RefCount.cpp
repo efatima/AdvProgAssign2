@@ -8,7 +8,7 @@ using namespace std;
 //default constructor of String class
 String::String()
 {
-	cout << "\tString class Default Constructor..." << endl;
+	cout << "String class Default Constructor..." << endl;
 	this->_length = 0;
 	this->_refcount = 1;
 	this->_strbuf = 0;
@@ -23,7 +23,7 @@ String* COW_RefCount::get_str() {
 //default constructor that sets the string buffer to NULL
 COW_RefCount::COW_RefCount() 
 {
-	cout << "\tCOW_RefCount class default Constructor..." << endl;
+	cout << "COW_RefCount class default Constructor..." << endl;
 	this->_str = NULL; 
 
 }
@@ -31,7 +31,7 @@ COW_RefCount::COW_RefCount()
 // destructor 
 COW_RefCount::~COW_RefCount()
 {
-	cout << "\tDestructor..." << endl;
+	cout << "Destructor..." << endl;
 
 	if (this->_str->_refcount == 1) //if one pointer is pointing to the object being deleted
 	{ //delete the object
@@ -47,7 +47,7 @@ COW_RefCount::~COW_RefCount()
 
 
 COW_RefCount::COW_RefCount(const COW_RefCount& stringObjectToCopy){
-	cout << "\tCOW_RefCount Contructor with 1 parameter..." << endl;
+	cout << "COW_RefCount Contructor with 1 parameter..." << endl;
 	this->_str = stringObjectToCopy._str; //copies the address -- the new pointer of COW_RefCount type points to same location as stringObjectToCopy
 	this->_str->_refcount++; //increases ref count -- since both pointers share the same _str, both refCounts will appear as incremented but they'll technically be the same
 }
@@ -55,7 +55,7 @@ COW_RefCount::COW_RefCount(const COW_RefCount& stringObjectToCopy){
 //in this function we copy the whole data passed and save it into a new String object and fill it's parameters
 COW_RefCount::COW_RefCount(char* newString ,int length)
 {
-	cout << "\tCOW_RefCount Contructor with 2 parameters..." << endl;
+	cout << "COW_RefCount Contructor with 2 parameters..." << endl;
 	_str = new String;
 	_str->_strbuf= new char[length];
 	_str->_length= length;
@@ -122,7 +122,7 @@ char COW_RefCount::charAt (int bufferindex) const
 
 void COW_RefCount::reserve(int length)
 {
-	//cout << "reserve" << endl;
+	cout << "reserve" << endl;
 	this->_str= new String;
 	this->_str->_strbuf= new char[length];
 }
@@ -130,7 +130,7 @@ void COW_RefCount::reserve(int length)
 
 //returns length of String buffer
 int COW_RefCount::len() const {
-	//cout << "length..." << endl;
+	cout << "length..." << endl;
 	return _str->_length;
 }
 

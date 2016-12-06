@@ -1,5 +1,5 @@
 //COW with Reference Counting
-//.h file
+//.h files
 
 class String
 {

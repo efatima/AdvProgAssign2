@@ -9,6 +9,8 @@
 #include<iostream>
 #include"COW_RefCount.h"
 #include"Copied.h"
+#include"Owned.h"
+
 
 
 using namespace std;
@@ -42,6 +44,14 @@ int main() {
 	cout << "\tChar at copied1[4] after appending 2 chars to copied1: " << copied1->charAt(4) << endl;// will be the new char 'F' appended
 	cout << "\tChar at copied2[4] after appending 2 chars to copied1: " << copied2->charAt(4) << endl;//will be garbage since length-1 is the last index location
 
+	cout << "\n\n\t%%%%%%%%%%%%%%%  Owned Pointers   %%%%%%%%%%%%%%%%%%%%" << endl;
+
+	String_Owned* owned1 = new String_Owned("Eman", 4);
+	cout << "\tChar at copied1[3]: " << owned1->charAt(3) << endl;
+	String_Owned* owned2 = new String_Owned(*owned1);
+	cout << "\tChar at copied2[3]: " << owned2->charAt(3) << endl;
+	owned2->append('F');
+	cout << "\tChar at copied2[4]: " << owned2->charAt(4) << endl;
 
 	cout <<"\n\n\t%%%%%%%%%%%%%%%  Reference Counting   %%%%%%%%%%%%%%%%%%%%"<< endl;
 
