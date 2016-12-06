@@ -55,10 +55,12 @@ int main() {
 
 	cout <<"\n\n\t%%%%%%%%%%%%%%%  Reference Counting   %%%%%%%%%%%%%%%%%%%%"<< endl;
 
-	COW_RefCount* string1 = new COW_RefCount(myString, strlen(myString));//using 2 param constructor
+	String_COW_RefCount* string1 = new String_COW_RefCount(myString, strlen(myString));//using 2 param constructor
+	cout << "\tReference count of String1: " << string1->get_refCount()<< endl;
+
 	
 	//COW_RefCount* string2 = new COW_RefCount(); //default constructor
-    COW_RefCount* string2 = new COW_RefCount(*string1); //using 1 param constructor
+    String_COW_RefCount* string2 = new String_COW_RefCount(*string1); //using 1 param constructor
 
 	cout << "\tChar at string1[0]: " << string1->charAt(0) << endl;
 	cout << "\tChar at string1[1]: " << string1->charAt(1) << endl;
@@ -66,8 +68,8 @@ int main() {
 	cout << "\tChar at string1[3]: " << string1->charAt(3) << endl;
 
 
-	cout << "\tReference count of String1 BEFORE modifying String2: " << string1->get_str()->_refcount << endl;
-	cout << "\tReference count of String2: " << string2->get_str()->_refcount << endl;
+	cout << "\tReference count of String1 BEFORE modifying String2: " << string1->get_refCount() << endl;
+	cout << "\tReference count of String2: " << string2->get_refCount() << endl;
 
 	string2->append('F');
 	string2->append('a');
@@ -76,8 +78,8 @@ int main() {
 	string2->append('m');
 	string2->append('a');
 	
-	cout << "\tReference count of String1 AFTER modifying String2: " << string1->get_str()->_refcount << endl;
-	cout << "\tReference count of String2: " << string2->get_str()->_refcount << endl;
+	cout << "\tReference count of String1 AFTER modifying String2: " << string1->get_refCount() << endl;
+	cout << "\tReference count of String2: " << string2->get_refCount() << endl;
 	cout << "\tChar at string2[0]: " << string2->charAt(0) << endl;
 	cout << "\tChar at string2[1]: " << string2->charAt(1) << endl;
 	cout << "\tChar at string2[2]: " << string2->charAt(2) << endl;
