@@ -33,7 +33,7 @@ int main() {
 	cout << "\tLength of copied2 Buffer: " << copied2->len() << endl;
 
 	cout << "\tChar at copied1[3]: " << copied1->charAt(3) << endl;
-	cout << "\tChar at copied2[3]: " << copied1->charAt(3) << endl;
+	cout << "\tChar at copied2[3]: " << copied2->charAt(3) << endl;
 
 	copied1->append('F');
 	copied1->append('a');
