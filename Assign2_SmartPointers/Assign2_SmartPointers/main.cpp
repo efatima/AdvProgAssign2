@@ -8,6 +8,7 @@
 ***************************/
 #include<iostream>
 #include"COW_RefCount.h"
+#include"COW_RefLinking.h"
 #include"Copied.h"
 #include"Owned.h"
 
@@ -22,7 +23,7 @@ int main() {
 	cout << "\n\tFollowing are some test cases on this implementation" << endl;
 	char* myString = "Eman";
 
-	cout << "\n\n\t%%%%%%%%%%%%%%%  Copied Pointers %%%%%%%%%%%%%%%%%%%%" << endl;
+	cout << "\n\n\t%%%%%%%%%%%%%%%&&  Copied Pointers  %%%%%%%%%%%%%%%%%%%%" << endl;
 
 
 	String_Copied* copied1 = new String_Copied("Eman", 4);
@@ -88,8 +89,15 @@ int main() {
 	cout << "\tChar at string2[5]: " << string2->charAt(5) << endl;
 	cout << "\tChar at string2[9]: " << string2->charAt(9) << endl; //should have char 'a'
 
-	cout << "\n\t%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl;
 
+	cout << "\n\n\t%%%%%%%%%%%%%%%%%  Reference Linking   %%%%%%%%%%%%%%%%%%%%" << endl;
+
+
+	String_COW_RefLinking* linking1 = new String_COW_RefLinking(myString, strlen(myString));//using 2 param constructor
+	String_COW_RefLinking* linking2 = new String_COW_RefLinking(*linking1); //using 1 param constructor
+
+	linking1->append('F');
+	cout << "\tChar at string1[4]: " << linking1->charAt(4) << endl;
 
 	int x;
 	cin >> x;
