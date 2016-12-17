@@ -89,7 +89,7 @@ char Buffer_COW_RefCount::charAt (int bufferindex) const
 //reserve
 void Buffer_COW_RefCount::reserve(int length)
 {
-	cout << "reserve" << endl;
+	//cout << "reserve" << endl;
 	this->_strbuf= new char[length];
 }
 
