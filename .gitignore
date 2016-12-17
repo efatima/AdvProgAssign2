@@ -1,0 +1,11 @@
+*.db
+*.psess
+*.sln
+*.vcxproj
+*.filters
+*.lastbuildstate
+*.tlog
+*.idb
+*.vspx
+*.iobj
+*.ipdb
